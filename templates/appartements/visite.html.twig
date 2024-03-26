@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<title>Hello AppartementsController!</title>
+
+<div class="example-wrapper">
+    <p>Visite</p>
+
+    <table> 
+        {% set break_ = false %}
+
+        {% for appartementData in appartements %}
+            <tr>
+                {% if not break_ %}
+                
+                    {% for key,item in appartementData %}
+                        <td>
+                            {{ key }}
+                        </td>
+                    {% endfor %}
+
+                {% endif %}
+
+                {% set break_ = true %}
+            </tr>
+        {% endfor %}
+
+        {% for appId, appartementData in appartements %}
+            <tr>
+            {% for key,item in appartementData %}
+                <td>
+                    {{ item }}
+                </td>
+            {% endfor %}
+
+            {% set id = appId %}
+                <td>
+                    <a href="{{url('visiter_appartements', parameters = {'appartId': id})}}">
+                        <button>
+                            <p>Visite</p>
+                        </button>
+                    </a>
+                </td> 
+            </tr>
+        {% endfor %}
+    </table>
+</div>

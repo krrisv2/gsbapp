@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+
+<div class="example-wrapper">
+    {{form(form)}}
+
+    {% if errorMessage is defined %}
+            <p>{{ errorMessage }}</p>
+    {% endif %}
+
+    <p><a href="{{ url("forgotpassword") }}">Forgot your password?</a></p>
+    <p><a href="{{ url('inscriptionpage')}}">Inscription</a></p>
+</div>
+

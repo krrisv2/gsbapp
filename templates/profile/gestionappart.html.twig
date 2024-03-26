@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    .tableau {border: 1px solid black;}
+</style>
+
+<div class="example-wrapper">
+    <div>
+        <table class = "tableau">
+            <tr class = "tableau">
+                {% set break = 0 %}
+
+                {% for appart in userData %}
+                    {% if break < 1 %}
+                        {% for key,detail in appart %}
+                            <td class = "tableau">{{ key }}</td>
+                        {% endfor %}
+                    {% endif %}
+
+                    {% set break = 1 %}
+                {% endfor %}
+            </tr>
+
+            {% for appart in userData %}
+                <tr class = "tableau">
+                    {% for detail in appart %}
+                        <td class = "tableau">{{ detail }}</td>
+                    {% endfor %}
+
+                    {% set id = appart["Numero"] %}
+
+                     <td><a href = "{{url('modif_appartements', parameters = {'numappart': id,})}}">
+                        <button>
+                            Modifier
+                        </button>
+                     </a>
+                     </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <a href = '{{url("ajout_appartements")}}'>Ajout appartements</a> 
+</div>
+
+<div>
+    <a href = '{{url("logout")}}'>Déconnexion</a> 
+</div>
